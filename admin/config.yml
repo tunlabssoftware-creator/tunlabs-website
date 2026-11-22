@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: KULLANICI_ADINIZ/tunlabs-website
+  branch: main
+  base_url: https://SIZIN-SITENIZ.pages.dev
+  auth_endpoint: api/auth
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "content"
+    label: "Site Yönetimi"
+    files:
+      - name: "games"
+        label: "Oyun Vitrini (Uygulamalar)"
+        file: "data/games.json"
+        fields:
+          - name: "items"
+            label: "Oyun Listesi"
+            widget: "list"
+            fields:
+              - { name: "title", label: "Oyun Adı", widget: "string" }
+              - { name: "genre", label: "Tür (Örn: Yarış / Aksiyon)", widget: "string" }
+              - { name: "description", label: "Kısa Açıklama", widget: "text" }
+              - { name: "image", label: "Kapak Görseli (1024x500)", widget: "image" }
+              - { name: "play_url", label: "Google Play Linki (Boş bırakılırsa 'Yakında' yazar)", widget: "string", required: false }
+
+      - name: "settings"
+        label: "Genel Ayarlar & Gizlilik Politikası"
+        file: "data/settings.json"
+        fields:
+          - { name: "hero_title", label: "Ana Başlık", widget: "string" }
+          - { name: "hero_subtitle", label: "Alt Açıklama", widget: "text" }
+          - { name: "contact_email", label: "İletişim E-posta Adresi", widget: "string" }
+          - { name: "privacy_policy", label: "Gizlilik Politikası (Privacy Policy) Metni", widget: "text" }
