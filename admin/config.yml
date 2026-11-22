@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: KULLANICI_ADINIZ/tunlabs-website
+  repo: tunlabssoftware-creator/tunlabs-website
   branch: main
-  base_url: https://SIZIN-SITENIZ.pages.dev
+  base_url: https://tunlabs-website.pages.dev
   auth_endpoint: api/auth
 
 media_folder: "images/uploads"
