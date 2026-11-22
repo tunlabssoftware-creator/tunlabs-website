@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tunlabs Software | Mobile Game Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0b0f;
+      --surface: #131620;
+      --card: #191d2b;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #262b3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10, 11, 15, 0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 6%; display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; font-size: 0.95rem; color: var(--muted); }
+    .nav-links a:hover { color: #fff; }
+
+    .hero { padding: 6rem 6% 4.5rem; text-align: center; max-width: 880px; margin: 0 auto; }
+    .badge {
+      display: inline-block; background: rgba(59,130,246,0.15); color: #60a5fa;
+      border: 1px solid rgba(59,130,246,0.3); padding: 0.35rem 0.9rem;
+      border-radius: 999px; font-size: 0.78rem; font-weight: 600; margin-bottom: 1.5rem;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; }
+    .hero p { font-size: 1.1rem; color: var(--muted); max-width: 640px; margin: 0 auto 2rem; }
+    .btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      padding: 0.85rem 1.8rem; border-radius: 8px; font-weight: 600; transition: 0.2s;
+    }
+    .btn:hover { background: var(--accent-hover); }
+
+    .section { padding: 4rem 6%; max-width: 1180px; margin: 0 auto; }
+    .section-title { font-size: 1.85rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .section-sub { color: var(--muted); margin-bottom: 2.5rem; }
+
+    .games-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;
+    }
+    .game-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      overflow: hidden; transition: transform 0.25s, border-color 0.25s; display: flex; flex-direction: column;
+    }
+    .game-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .game-banner { width: 100%; height: 195px; object-fit: cover; background: #1e2436; }
+    .game-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .game-genre { font-size: 0.75rem; font-weight: 600; color: #60a5fa; text-transform: uppercase; }
+    .game-name { font-size: 1.35rem; font-weight: 700; margin: 0.35rem 0 0.7rem; }
+    .game-desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 1.5rem; flex: 1; }
+    .store-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: #0f172a; border: 1px solid var(--border); padding: 0.7rem 1.2rem;
+      border-radius: 8px; font-size: 0.9rem; font-weight: 600; transition: 0.2s;
+    }
+    .store-btn:hover { background: #1e293b; border-color: #475569; }
+    .store-btn.disabled { opacity: 0.55; pointer-events: none; }
+
+    .contact-box {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      padding: 3.2rem 2rem; text-align: center;
+    }
+    .contact-box h2 { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .contact-box p { color: var(--muted); max-width: 540px; margin: 0 auto 1.75rem; }
+    .email-pill {
+      display: inline-block; background: var(--card); border: 1px solid var(--border);
+      padding: 0.85rem 1.6rem; border-radius: 10px; font-weight: 600; color: #60a5fa;
+    }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 2.2rem 6%; margin-top: 4rem;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 1rem; color: var(--muted); font-size: 0.88rem;
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a:hover { color: #fff; }
+    @media (max-width: 640px) { .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="/" class="brand">TUNLABS <span>SOFTWARE</span></a>
+    <nav class="nav-links">
+      <a href="#games">Oyunlarımız</a>
+      <a href="#contact">İletişim</a>
+      <a href="/privacy.html">Gizlilik Politikası</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="badge">Mobile Game Development Studio</div>
+    <h1 id="hero-title">Akıcı Oynanış, Modern Tasarım.</h1>
+    <p id="hero-subtitle">Tunlabs Software olarak mobil platformlar için yüksek tempolu, eğlenceli ve özenle tasarlanmış oyun deneyimleri geliştiriyoruz.</p>
+    <a href="#games" class="btn">Oyunlarımızı Keşfet</a>
+  </section>
+
+  <section class="section" id="games">
+    <h2 class="section-title">Oyunlarımız</h2>
+    <p class="section-sub">Google Play üzerinde yayınlanan ve geliştirme aşamasındaki projelerimiz.</p>
+    <div class="games-grid" id="games-container"></div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="contact-box">
+      <h2>Bizimle İletişime Geçin</h2>
+      <p>Oyunlarımızla ilgili destek talepleri, hata bildirimleri veya iş birliği teklifleri için bize ulaşabilirsiniz.</p>
+      <a href="mailto:contact@tunlabssoftware.com" class="email-pill" id="contact-email">contact@tunlabssoftware.com</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© <span id="year"></span> Tunlabs Software. Tüm hakları saklıdır.</div>
+    <div class="footer-links">
+      <a href="/">Ana Sayfa</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/admin/">Yönetici Girişi</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Genel Ayarları Yükle
+    fetch('/data/settings.json')
+      .then(res => res.json())
+      .then(settings => {
+        if (settings.hero_title) document.getElementById('hero-title').textContent = settings.hero_title;
+        if (settings.hero_subtitle) document.getElementById('hero-subtitle').textContent = settings.hero_subtitle;
+        if (settings.contact_email) {
+          const el = document.getElementById('contact-email');
+          el.textContent = settings.contact_email;
+          el.href = 'mailto:' + settings.contact_email;
+        }
+      }).catch(() => {});
+
+    // Oyunları Yükle
+    fetch('/data/games.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('games-container');
+        const games = data.items || [];
+        container.innerHTML = games.map(game => `
+          <div class="game-card">
+            <img src="${game.image}" alt="${game.title}" class="game-banner" />
+            <div class="game-body">
+              <span class="game-genre">${game.genre}</span>
+              <h3 class="game-name">${game.title}</h3>
+              <p class="game-desc">${game.description}</p>
+              ${game.play_url
+                ? `<a href="${game.play_url}" target="_blank" rel="noopener" class="store-btn">▶ Google Play'de İndir</a>`
+                : `<span class="store-btn disabled">Yakında Mağazada</span>`
+              }
+            </div>
+          </div>
+        `).join('');
+      });
+  </script>
+</body>
+</html>
